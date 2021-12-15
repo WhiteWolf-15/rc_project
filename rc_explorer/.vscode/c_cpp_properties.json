@@ -1,0 +1,36 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/andre_teixeira/catkin_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/andre_teixeira/catkin_ws/src/RC/micros_swarm_framework/applications/app1/include/**",
+        "/home/andre_teixeira/catkin_ws/src/RC/micros_swarm_framework/applications/app2/include/**",
+        "/home/andre_teixeira/catkin_ws/src/RC/micros_swarm_framework/applications/app3/include/**",
+        "/home/andre_teixeira/catkin_ws/src/RC/micros_swarm_framework/core/app_loader/include/**",
+        "/home/andre_teixeira/catkin_ws/src/RC/explore_lite/include/**",
+        "/home/andre_teixeira/catkin_ws/src/RC/micros_swarm_framework/applications/gazebo_flocking/include/**",
+        "/home/andre_teixeira/catkin_ws/src/RC/micros_swarm_framework/tools/hector_quadrotor/hector_uav_msgs/include/**",
+        "/home/andre_teixeira/catkin_ws/src/RC/micros_swarm_framework/core/micros_swarm/include/**",
+        "/home/andre_teixeira/catkin_ws/src/RC/micros_swarm_framework/swarm_library/olfati_saber_flocking/include/**",
+        "/home/andre_teixeira/catkin_ws/src/RC/micros_swarm_framework/core/opensplice_dds_broker/include/**",
+        "/home/andre_teixeira/catkin_ws/src/RC/micros_swarm_framework/swarm_library/pso/include/**",
+        "/home/andre_teixeira/catkin_ws/src/RC/robot_state_publisher/include/**",
+        "/home/andre_teixeira/catkin_ws/src/RC/micros_swarm_framework/core/ros_broker/include/**",
+        "/home/andre_teixeira/catkin_ws/src/RC/micros_swarm_framework/tests/testbb/include/**",
+        "/home/andre_teixeira/catkin_ws/src/RC/micros_swarm_framework/tests/testnc/include/**",
+        "/home/andre_teixeira/catkin_ws/src/RC/micros_swarm_framework/tests/testrth/include/**",
+        "/home/andre_teixeira/catkin_ws/src/RC/micros_swarm_framework/tests/testscdspso/include/**",
+        "/home/andre_teixeira/catkin_ws/src/RC/micros_swarm_framework/tests/testvstig/include/**",
+        "/home/andre_teixeira/catkin_ws/src/RC/micros_swarm_framework/core/udp_bc_broker/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}

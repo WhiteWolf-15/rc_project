@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<launch>
+    <master auto="start"/>
+
+    <!-- Arguments -->
+    <arg name="model" default="$(find p3dx_description)/urdf/pioneer3dx.xml"/>
+    <arg name="teleop" default="false"/>
+    <arg name="rviz" default="true"/>
+
+    <!-- Parameters -->
+    <param name="robot_description" textfile="$(arg model)" />
+    <param name="use_sim_time" value="true"/>
+
+    <!-- Include launch files -->
+    <include file="$(find rc_explorer)/launch/gazebo_sim.launch">
+        <arg name="x_pos" value="0.0"/>
+        <arg name="y_pos" value="0.0"/>
+        <arg name="z_pos" value="0.05"/>
+    </include>
+    <include file="$(find rc_explorer)/launch/gmapping.launch"/>
+    <include file="$(find rc_explorer)/launch/move_base.launch">
+        <arg name="sim" value="true"/>
+        <arg name="move_forward_only" value="true"/>
+    </include>
+
+    <!-- Nodes -->
+    <group if="$(arg teleop)">
+        <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen"/>    
+    </group>
+    <group if="$(arg rviz)">
+        <node type="rviz" name="rviz" pkg="rviz" args="-d $(find rc_explorer)/rviz_configs/main_config.rviz" />
+    </group>
+
+    <!-- <include file="$(find explore_lite)/launch/explore_lite.launch"/> -->
+
+</launch>
