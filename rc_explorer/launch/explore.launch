@@ -6,21 +6,21 @@
     <arg name="model" default="$(find p3dx_description)/urdf/pioneer3dx.xml"/>
     <arg name="teleop" default="false"/>
     <arg name="rviz" default="true"/>
+    <arg name="stage" default="true"/>
 
     <!-- Parameters -->
     <param name="robot_description" textfile="$(arg model)" />
     <param name="use_sim_time" value="true"/>
 
     <!-- Include launch files -->
-    <include file="$(find rc_explorer)/launch/gazebo_sim.launch">
-        <arg name="x_pos" value="0.0"/>
-        <arg name="y_pos" value="0.0"/>
-        <arg name="z_pos" value="0.05"/>
-    </include>
+    <group unless="$(arg stage)">
+        <include file="$(find rc_explorer)/launch/gazebo_sim.launch">
+    </group>
+    <include file="$(find rc_explorer)/launch/stage.launch">
     <include file="$(find rc_explorer)/launch/gmapping.launch"/>
     <include file="$(find rc_explorer)/launch/move_base.launch">
         <arg name="sim" value="true"/>
-        <arg name="move_forward_only" value="true"/>
+        <!-- <arg name="move_forward_only" value="true"/> -->
     </include>
 
     <!-- Nodes -->
