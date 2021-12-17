@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="config" default="stage_sim"/>
+
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find rc_explorer)/rviz_configs/$(arg config).rviz" />
+</launch>

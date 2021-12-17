@@ -12,5 +12,5 @@ max_planning_retries: -1
 
 #base_global_planner: global_planner/GlobalPlanner
 base_global_planner: navfn/NavfnROS
-base_local_planner: dwa_local_planner/DWAPlannerROS
-#base_local_planner: base_local_planner/TrajectoryPlannerROS
+#base_local_planner: dwa_local_planner/DWAPlannerROS
+base_local_planner: base_local_planner/TrajectoryPlannerROS
