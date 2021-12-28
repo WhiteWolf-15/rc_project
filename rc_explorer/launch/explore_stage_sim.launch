@@ -5,37 +5,27 @@
     <!--===============================================================================-->
     <!-- Arguments -->
     <!--===============================================================================-->
-    <arg name="model" default="$(find p3dx_description)/urdf/pioneer3dx.xml"/>
     <arg name="teleop" default="false"/>
     <arg name="rviz" default="true"/>
-    <arg name="stage" default="true"/>
+    <arg name="rviz_config" default="stage_1robot_sim"/>
 
     <!--===============================================================================-->
     <!-- Parameters -->
     <!--===============================================================================-->
-    <param name="robot_description" textfile="$(arg model)" />
     <param name="use_sim_time" value="true"/>
 
     <!--===============================================================================-->
     <!-- Include launch files -->
     <!--===============================================================================-->
-    <group unless="$(arg stage)">
-        <include file="$(find rc_explorer)/launch/gazebo_sim.launch"/>
-    </group>
-
-    <group if="$(arg stage)">
-        <include file="$(find rc_explorer)/launch/stage_sim.launch"/>
-    </group>
-
+    <include file="$(find rc_explorer)/launch/stage.launch"/>
     <include file="$(find rc_explorer)/launch/gmapping.launch"/>
-
-    <include file="$(find rc_explorer)/launch/move_base.launch">
-        <arg name="sim" value="true"/>
-    </include>
+    <include file="$(find rc_explorer)/launch/move_base.launch"/>
 
     <include file="$(find p3dx_description)/launch/p3dx_description.launch">
         <arg name="tf_prefix" value="" />
     </include>
+
+    <include file="$(find explore_lite)/launch/explore_lite.launch"/>
 
     <!--===============================================================================-->
     <!-- Nodes -->
@@ -45,11 +35,7 @@
     </group>
 
     <group if="$(arg rviz)">
-        <include file="$(find rc_explorer)/launch/rviz.launch">
-            <arg name="config" value="stage_1robot_sim"/>
-        </include>
+        <node type="rviz" name="rviz" pkg="rviz" args="-d $(find rc_explorer)/rviz_configs/$(arg rviz_config).rviz" />
     </group>
-
-    <include file="$(find explore_lite)/launch/explore_lite.launch"/>
 
 </launch>

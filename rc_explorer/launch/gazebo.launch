@@ -14,9 +14,10 @@
         <arg name="debug" value="false"/>   
     </include>
 
-    <!-- <param name="robot_description" command="$(find xacro)/xacro -inorder $(find p3dx_description)/urdf/pioneer3dx.xml" /> -->
-    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_waffle.urdf.xacro" />
+    <param name="robot_description" command="$(find xacro)/xacro $(find p3dx_description)/urdf/pioneer3dx.xacro" />
 
     <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf"  args="-urdf -model pioneer3dx -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
-    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
 </launch>
