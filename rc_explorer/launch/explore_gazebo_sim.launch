@@ -8,11 +8,12 @@
     <arg name="teleop" default="false"/>
     <arg name="rviz" default="true"/>
     <arg name="rviz_config" default="gazebo_1robot_sim"/>
-
+    <arg name="model" default="$(find p3dx_description)/urdf/pioneer3dx.xml"/>
     <!--===============================================================================-->
     <!-- Parameters -->
     <!--===============================================================================-->
     <param name="use_sim_time" value="true"/>
+    <param name="robot_description" textfile="$(arg model)" />
 
     <!--===============================================================================-->
     <!-- Include launch files -->
@@ -21,7 +22,7 @@
     <include file="$(find rc_explorer)/launch/gmapping.launch"/>
     <include file="$(find rc_explorer)/launch/move_base.launch"/>
 
-    <include file="$(find explore_lite)/launch/explore_lite.launch"/>
+    <!-- <include file="$(find explore_lite)/launch/explore_lite.launch"/> -->
 
     <!--===============================================================================-->
     <!-- Nodes -->

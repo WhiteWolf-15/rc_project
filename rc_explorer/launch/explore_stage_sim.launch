@@ -25,7 +25,7 @@
         <arg name="tf_prefix" value="" />
     </include>
 
-    <include file="$(find explore_lite)/launch/explore_lite.launch"/>
+    <!-- <include file="$(find explore_lite)/launch/explore_lite.launch"/> -->
 
     <!--===============================================================================-->
     <!-- Nodes -->

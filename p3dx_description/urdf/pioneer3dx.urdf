@@ -24,49 +24,63 @@ This project is based on work by Tracy Davies, where it was in turn based on
 work original in ucs-ros-pkg.
  -->
 <robot name="pioneer3dx" xmlns:xacro="http://ros.org/wiki/xacro">
-  <!-- import all gazebo-customization elements, including gazebo colors -->
+  <!-- ros_control plugin -->
   <gazebo>
     <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
-      <robotNamespace>/p3dx</robotNamespace>
     </plugin>
   </gazebo>
+  <!-- base_link -->
   <gazebo reference="base_link">
     <material>Gazebo/Red</material>
   </gazebo>
+  <!-- top_plate -->
   <gazebo reference="top_plate">
     <material>Gazebo/Black</material>
   </gazebo>
+  <!-- swivel -->
   <gazebo reference="swivel">
     <material>Gazebo/Grey</material>
   </gazebo>
+  <!-- center_hubcap -->
   <gazebo reference="center_hubcap">
     <material>Gazebo/Grey</material>
   </gazebo>
+  <!-- center_wheel -->
   <gazebo reference="center_wheel">
     <material>Gazebo/Black</material>
-    <mu1>10.0</mu1>
-    <mu2>10.0</mu2>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
     <kp>1000000.0</kp>
     <kd>1.0</kd>
   </gazebo>
+  <!-- front_sonar -->
   <gazebo reference="front_sonar">
     <material value="Gazebo/Yellow"/>
   </gazebo>
+  <!-- differential drive -->
   <gazebo>
     <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
       <alwaysOn>true</alwaysOn>
       <updateRate>100</updateRate>
       <leftJoint>base_right_wheel_joint</leftJoint>
       <rightJoint>base_left_wheel_joint</rightJoint>
-      <wheelSeparation>0.39</wheelSeparation>
-      <wheelDiameter>0.15</wheelDiameter>
+      <wheelSeparation>0.314</wheelSeparation>
+      <wheelDiameter>0.179</wheelDiameter>
       <torque>5</torque>
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
       <robotBaseFrame>base_link</robotBaseFrame>
+      <publishWheelTF>true</publishWheelTF>
+      <publishWheelJointState>true</publishWheelJointState>
+      <wheelAcceleration>0</wheelAcceleration>
+      <wheelTorque>5</wheelTorque>
+      <rosDebugLevel>na</rosDebugLevel>
+      <legacyMode>true</legacyMode>
+      <publishTf>1</publishTf>
     </plugin>
   </gazebo>
+  <!-- ground truth -->
   <gazebo>
     <plugin filename="libgazebo_ros_p3d.so" name="p3d_base_controller">
       <alwaysOn>true</alwaysOn>
@@ -80,23 +94,24 @@ work original in ucs-ros-pkg.
       <rpyOffsets>0 0 0</rpyOffsets>
     </plugin>
   </gazebo>
+  <!-- lms100 -->
   <gazebo reference="lms100">
     <sensor name="head_hokuyo_sensor" type="ray">
       <pose>0 0 0 0 0 0</pose>
-      <visualize>false</visualize>
+      <visualize>true</visualize>
       <update_rate>50</update_rate>
       <ray>
         <scan>
           <horizontal>
-            <samples>360</samples>
+            <samples>727</samples>
             <resolution>1</resolution>
-            <min_angle>-1.570796</min_angle>
-            <max_angle>1.570796</max_angle>
+            <min_angle>-2.0944</min_angle>
+            <max_angle>2.0944</max_angle>
           </horizontal>
         </scan>
         <range>
-          <min>0.10</min>
-          <max>30.0</max>
+          <min>0.1</min>
+          <max>4.0</max>
           <resolution>0.01</resolution>
         </range>
         <noise>
@@ -114,7 +129,6 @@ work original in ucs-ros-pkg.
       </plugin>
     </sensor>
   </gazebo>
-  <!-- import the pioneer 3dx's wheels -->
   <!-- chassis -->
   <link name="base_link">
     <inertial>
@@ -123,7 +137,7 @@ work original in ucs-ros-pkg.
       <origin xyz="-0.05 0 0"/>
       <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
     </inertial>
-    <visual name="base_visual">
+    <visual>
       <origin rpy="0 0 0" xyz="-0.045 0 0.148"/>
       <geometry name="pioneer_geom">
         <mesh filename="package://p3dx_description/meshes/chassis.stl"/>
@@ -146,7 +160,7 @@ work original in ucs-ros-pkg.
       <origin xyz="0 0 0"/>
       <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
     </inertial>
-    <visual name="base_visual">
+    <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry name="top_geom">
         <mesh filename="package://p3dx_description/meshes/top.stl"/>
@@ -174,7 +188,7 @@ work original in ucs-ros-pkg.
       <origin xyz="0 0 0"/>
       <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
     </inertial>
-    <visual name="base_visual">
+    <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry name="pioneer_geom">
         <mesh filename="package://p3dx_description/meshes/swivel.stl"/>
@@ -186,11 +200,11 @@ work original in ucs-ros-pkg.
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <box size="0 0 0"/>
+        <box size="0.00001 0.00001 0.00001"/>
       </geometry>
     </collision>
   </link>
-  <joint name="base_swivel_joint" type="continuous">
+  <joint name="base_swivel_joint" type="fixed">
     <origin rpy="0 0 0" xyz="-0.185 0 0.055"/>
     <axis xyz="0 0 1"/>
     <anchor xyz="0 0 0"/>
@@ -206,7 +220,7 @@ work original in ucs-ros-pkg.
       <origin xyz="0 0 0"/>
       <inertia ixx="0.012411765597" ixy="-0.000711733678" ixz="0.00050272983" iyy="0.015218160428" iyz="-0.000004273467" izz="0.011763977943"/>
     </inertial>
-    <visual name="base_visual">
+    <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry name="pioneer_geom">
         <mesh filename="package://p3dx_description/meshes/center_hubcap.stl"/>
@@ -218,11 +232,11 @@ work original in ucs-ros-pkg.
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <box size="0 0 0"/>
+        <box size="0.00001 0.00001 0.00001"/>
       </geometry>
     </collision>
   </link>
-  <joint name="swivel_hubcap_joint" type="continuous">
+  <joint name="swivel_hubcap_joint" type="fixed">
     <origin rpy="0 0 0" xyz="-0.026 0 -0.016"/>
     <axis xyz="0 1 0"/>
     <anchor xyz="0 0 0"/>
@@ -234,11 +248,11 @@ work original in ucs-ros-pkg.
   <!-- center_wheel -->
   <link name="center_wheel">
     <inertial>
-      <mass value="0.1"/>
+      <mass value="1.0"/>
       <origin xyz="0 0 0"/>
       <inertia ixx="0.012411765597" ixy="-0.000711733678" ixz="0.00050272983" iyy="0.015218160428" iyz="-0.000004273467" izz="0.011763977943"/>
     </inertial>
-    <visual name="base_visual">
+    <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry name="pioneer_geom">
         <mesh filename="package://p3dx_description/meshes/center_wheel.stl"/>
@@ -259,13 +273,14 @@ work original in ucs-ros-pkg.
     <parent link="center_wheel"/>
     <child link="center_hubcap"/>
   </joint>
+  <!-- wheel -->
   <link name="p3dx_left_wheel">
     <inertial>
       <mass value="0.5"/>
       <origin xyz="0 0 0"/>
       <inertia ixx="0.012411765597" ixy="0" ixz="0" iyy="0.015218160428" iyz="0" izz="0.011763977943"/>
     </inertial>
-    <visual name="base_visual">
+    <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry name="pioneer_geom">
         <mesh filename="package://p3dx_description/meshes/left_wheel.stl"/>
@@ -287,13 +302,14 @@ work original in ucs-ros-pkg.
     <parent link="p3dx_left_wheel"/>
     <child link="p3dx_left_hubcap"/>
   </joint>
+  <!-- hubcap -->
   <link name="p3dx_left_hubcap">
     <inertial>
       <mass value="0.01"/>
       <origin xyz="0 0 0"/>
       <inertia ixx="0.012411765597" ixy="0" ixz="0" iyy="0.015218160428" iyz="0" izz="0.011763977943"/>
     </inertial>
-    <visual name="base_visual">
+    <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry name="pioneer_geom">
         <mesh filename="package://p3dx_description/meshes/left_hubcap.stl"/>
@@ -305,7 +321,7 @@ work original in ucs-ros-pkg.
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <box size="0 0 0"/>
+        <box size="0.00001 0.00001 0.00001"/>
       </geometry>
     </collision>
   </link>
@@ -318,6 +334,7 @@ work original in ucs-ros-pkg.
     <parent link="base_link"/>
     <child link="p3dx_left_wheel"/>
   </joint>
+  <!-- gazebo elements -->
   <transmission name="base_link_left_wheel_trans">
     <type>pr2_mechanism_model/SimpleTransmission</type>
     <joint name="base_left_wheel_joint"/>
@@ -336,13 +353,14 @@ work original in ucs-ros-pkg.
     <kp>100000000.0</kp>
     <kd>1.0</kd>
   </gazebo>
+  <!-- wheel -->
   <link name="p3dx_right_wheel">
     <inertial>
       <mass value="0.5"/>
       <origin xyz="0 0 0"/>
       <inertia ixx="0.012411765597" ixy="0" ixz="0" iyy="0.015218160428" iyz="0" izz="0.011763977943"/>
     </inertial>
-    <visual name="base_visual">
+    <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry name="pioneer_geom">
         <mesh filename="package://p3dx_description/meshes/right_wheel.stl"/>
@@ -364,13 +382,14 @@ work original in ucs-ros-pkg.
     <parent link="p3dx_right_wheel"/>
     <child link="p3dx_right_hubcap"/>
   </joint>
+  <!-- hubcap -->
   <link name="p3dx_right_hubcap">
     <inertial>
       <mass value="0.01"/>
       <origin xyz="0 0 0"/>
       <inertia ixx="0.012411765597" ixy="0" ixz="0" iyy="0.015218160428" iyz="0" izz="0.011763977943"/>
     </inertial>
-    <visual name="base_visual">
+    <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry name="pioneer_geom">
         <mesh filename="package://p3dx_description/meshes/right_hubcap.stl"/>
@@ -382,7 +401,7 @@ work original in ucs-ros-pkg.
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <box size="0 0 0"/>
+        <box size="0.00001 0.00001 0.00001"/>
       </geometry>
     </collision>
   </link>
@@ -395,6 +414,7 @@ work original in ucs-ros-pkg.
     <parent link="base_link"/>
     <child link="p3dx_right_wheel"/>
   </joint>
+  <!-- gazebo elements -->
   <transmission name="base_link_right_wheel_trans">
     <type>pr2_mechanism_model/SimpleTransmission</type>
     <joint name="base_right_wheel_joint"/>
@@ -420,7 +440,7 @@ work original in ucs-ros-pkg.
       <origin xyz="0 0 0"/>
       <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
     </inertial>
-    <visual name="front_sonar_vis">
+    <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry name="pioneer_geom">
         <mesh filename="package://p3dx_description/meshes/front_sonar.stl"/>
@@ -432,7 +452,7 @@ work original in ucs-ros-pkg.
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <box size="0 0 0"/>
+        <box size="0.00001 0.00001 0.00001"/>
       </geometry>
     </collision>
   </link>
@@ -463,8 +483,9 @@ work original in ucs-ros-pkg.
   </link>
   <joint name="lms100_joint" type="fixed">
     <axis xyz="0 1 0"/>
-    <origin rpy="0 0 0" xyz="0.16 0 0.15"/>
+    <origin rpy="0 0 0" xyz="0.12 0 0.26"/>
     <parent link="base_link"/>
     <child link="lms100"/>
   </joint>
 </robot>
+
