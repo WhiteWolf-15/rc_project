@@ -14,12 +14,13 @@
         <arg name="debug" value="false"/>   
     </include>
 
-    <!-- <param name="robot_description" command="$(find xacro)/xacro  $(find p3dx_description)/urdf/pioneer3dx.xacro" /> -->
-    <!-- <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf"  args="-urdf -model pioneer3dx -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" /> -->
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find p3dx_description)/urdf/pioneer3dx.urdf -urdf -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -model pioneer3dx"/>
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find pioneer_description)/urdf/pioneer3dx.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf"  args="-param robot_description -urdf -model pioneer3dx -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos)" />
+ 
+    <!-- <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find p3dx_description)/urdf/pioneer3dx.urdf -urdf -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -model pioneer3dx"/> -->
     <!-- <node name="sdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model p3dx -param robot_description" /> -->
 
-    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" /> -->
 
 </launch>
