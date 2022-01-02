@@ -1,9 +1,10 @@
 obstacle_range: 2.0
 raytrace_range: 3.0
 
-robot_radius: 0.225 #0.25 #measured diameter (worst case): 0.41
+#robot_radius: 0.225 #0.25 #measured diameter (worst case): 0.41
+robot_radius: 0.25
 
-inflation_radius: 0.1 #0.05 0.35 #we may try to raise a litte bit...
+inflation_radius: 0.35 #0.05 0.35 #we may try to raise a litte bit...
 cost_scaling_factor: 2.0
 
 observation_sources: laser_scan_sensor

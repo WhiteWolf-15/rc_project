@@ -8,34 +8,35 @@
     <arg name="teleop" default="false"/>
     <arg name="rviz" default="true"/>
     <arg name="rviz_config" default="gazebo_1robot_sim"/>
-    <!-- <arg name="model" default="$(find p3dx_description)/urdf/pioneer3dx.xml"/> -->
     <arg name="model" default="$(find pioneer_description)/urdf/pioneer3dx.xacro"/>
 
     <!--===============================================================================-->
     <!-- Parameters -->
     <!--===============================================================================-->
     <param name="use_sim_time" value="true"/>
-    <!-- <param name="robot_description" textfile="$(arg model)" /> -->
     <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)"/>
 
     <remap from="pioneer/cmd_vel" to="cmd_vel" />
     <remap from="base_scan" to="scan" />
 
-    <rosparam file="$(find p3dx_control)/config/pioneer3dx.yaml" command="load"/>
+    <!-- <rosparam file="$(find p3dx_control)/config/pioneer3dx.yaml" command="load"/> -->
 
     <!--===============================================================================-->
     <!-- Include launch files -->
     <!--===============================================================================-->
-    <include file="$(find rc_explorer)/launch/gazebo.launch"/>
+    <include file="$(find rc_explorer)/launch/gazebo.launch">
+        <arg name="x_pos" default="7.0"/>
+        <arg name="y_pos" default="-10.0"/>
+        <arg name="z_pos" default="0.05"/>
+    </include>
     <include file="$(find rc_explorer)/launch/gmapping.launch"/>
     <include file="$(find rc_explorer)/launch/move_base.launch"/>
-
     <include file="$(find explore_lite)/launch/explore_lite.launch"/>
 
     <!--===============================================================================-->
     <!-- Nodes -->
     <!--===============================================================================-->
-    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/p3dx" args="joint1_position_controller joint2_position_controller joint_state_controller"/>
+    <!-- <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/p3dx" args="joint1_position_controller joint2_position_controller joint_state_controller"/> -->
     <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
@@ -51,7 +52,7 @@
 		<param name="resolution" value="0.05" />
 		<param name="frame_id" type="string" value="map" />
 		<param name="sensor_model/max_range" value="5.0" />
-		<remap from="cloud_in" to="/camera/depth/points" />
+		<remap from="cloud_in" to="camera/depth/points" />
 	</node>
 
 </launch>

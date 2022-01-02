@@ -398,6 +398,14 @@
     </inertial>
   </link>
   
+
+  <joint name="camera_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.57 0 -1.57"/>
+    <parent link="camera_link"/>
+    <child link="camera_optical_frame"/>
+  </joint>
+  <link name="camera_optical_frame"/>
+
   <!-- Hat -->
 <!--  <joint name="hat_joint" type="fixed">-->
 <!--    <origin xyz="0.0 0 0.0255" rpy="0 0 0"/>-->
