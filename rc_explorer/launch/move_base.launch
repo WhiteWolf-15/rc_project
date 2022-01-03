@@ -2,18 +2,19 @@
 <launch>
   <!-- Arguments -->
   <arg name="model" default="pioneer3dx"/>
+  <arg name="sim" default="gazebo"/>
 
   <!-- move_base node -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <!-- Load parameters -->
-    <rosparam file="$(find rc_explorer)/param/move_base_params.yaml" command="load" />
-    <rosparam file="$(find rc_explorer)/param/local_planner_params.yaml" command="load" />
-    <rosparam file="$(find rc_explorer)/param/global_planner_params.yaml" command="load" />
+    <rosparam file="$(find rc_explorer)/param/$(arg sim)_move_base_params.yaml" command="load" />
+    <rosparam file="$(find rc_explorer)/param/$(arg sim)_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find rc_explorer)/param/$(arg sim)_global_planner_params.yaml" command="load" />
 
-    <rosparam file="$(find rc_explorer)/param/costmap_common_params_$(arg model).yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find rc_explorer)/param/costmap_common_params_$(arg model).yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find rc_explorer)/param/global_costmap_params_$(arg model).yaml" command="load" />
-    <rosparam file="$(find rc_explorer)/param/local_costmap_params_$(arg model).yaml" command="load" />
+    <rosparam file="$(find rc_explorer)/param/$(arg sim)_costmap_common_params_$(arg model).yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find rc_explorer)/param/$(arg sim)_costmap_common_params_$(arg model).yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find rc_explorer)/param/$(arg sim)_global_costmap_params_$(arg model).yaml" command="load" />
+    <rosparam file="$(find rc_explorer)/param/$(arg sim)_local_costmap_params_$(arg model).yaml" command="load" />
 
   </node>
 

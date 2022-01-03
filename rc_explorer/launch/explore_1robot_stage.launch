@@ -9,10 +9,12 @@
     <arg name="rviz" default="true"/>
     <arg name="rviz_config" default="stage_1robot_sim"/>
 
+
     <!--===============================================================================-->
     <!-- Parameters -->
     <!--===============================================================================-->
     <param name="use_sim_time" value="true"/>
+
 
     <!--===============================================================================-->
     <!-- Include launch files -->
@@ -25,7 +27,6 @@
     <include file="$(find pioneer_description)/launch/pioneer_description.launch">
         <arg name="tf_prefix" value="" />
     </include>
-    <include file="$(find explore_lite)/launch/explore_lite.launch"/>
 
     <!--===============================================================================-->
     <!-- Nodes -->
