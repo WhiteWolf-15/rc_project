@@ -335,7 +335,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/ThirdPersonFollower
-      Distance: 22.504135131835938
+      Distance: 25.204631805419922
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -343,17 +343,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 10.668675422668457
-        Y: 2.864579677581787
+        X: 10.781391143798828
+        Y: 2.858076572418213
         Z: 3.874301910400391e-06
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.519796371459961
+      Pitch: 1.5597963333129883
       Target Frame: <Fixed Frame>
-      Yaw: 4.658557891845703
+      Yaw: 4.713559150695801
     Saved: ~
 Window Geometry:
   Displays:

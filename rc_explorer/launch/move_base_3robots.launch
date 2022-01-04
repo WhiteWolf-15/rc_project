@@ -3,9 +3,12 @@
   <!-- Arguments -->
   <arg name="model" default="pioneer3dx"/>
   <arg name="sim" default="gazebo"/>
+  <arg name="namespace" default=""/>
 
   <!-- move_base node -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <remap from="$(arg namespace)/scan" to="scan" />
+
     <!-- Load parameters -->
     <rosparam file="$(find rc_explorer)/param/$(arg sim)_move_base_params.yaml" command="load" />
     <rosparam file="$(find rc_explorer)/param/$(arg sim)_local_planner_params.yaml" command="load" />
@@ -15,6 +18,17 @@
     <rosparam file="$(find rc_explorer)/param/$(arg sim)_costmap_common_params_$(arg model).yaml" command="load" ns="local_costmap" />
     <rosparam file="$(find rc_explorer)/param/$(arg sim)_global_costmap_params_$(arg model).yaml" command="load" />
     <rosparam file="$(find rc_explorer)/param/$(arg sim)_local_costmap_params_$(arg model).yaml" command="load" />
+
+    <!-- Change frames and topics names -->
+    <param name="global_costmap/global_frame" value="$(arg namespace)/map"/>
+    <param name="global_costmap/robot_base_frame" value="$(arg namespace)/base_link"/>
+    <param name="global_costmap/laser_scan_sensor/sensor_frame" value="$(arg namespace)/base_laser_link"/>
+    <param name="global_costmap/laser_scan_sensor/topic" value="/$(arg namespace)/scan"/>    
+    <param name="local_costmap/global_frame" value="$(arg namespace)/map"/>
+    <param name="local_costmap/robot_base_frame" value="$(arg namespace)/base_link"/>
+    <param name="local_costmap/laser_scan_sensor/sensor_frame" value="$(arg namespace)/base_laser_link"/>
+    <param name="local_costmap/laser_scan_sensor/topic" value="/$(arg namespace)/scan"/>
+    <param name="local_costmap/obstacle_layer/laser_scan_sensor/topic" value="/$(arg namespace)/scan"/>
   </node>
 
 </launch>

@@ -1,8 +1,14 @@
 <?xml version="1.0"?>
 <launch>
+  <arg name="namespace" default=""/>
+
   <!-- gmapping node -->
   <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
     <!--<remap from="scan" to="base_scan"/>-->
+    <param name="odom_frame" value="$(arg namespace)/odom" />
+    <param name="base_frame" value="$(arg namespace)/base_footprint" />
+    <param name="map_frame" value="$(arg namespace)/map" />
+
     <param name="throttle_scans" value="5"/><!-- 10  1  -->
     <param name="map_udpate_interval" value="2.5"/> <!--5.0 1.0 -->
     <param name="maxUrange" value="6.0"/> <!--16-->
