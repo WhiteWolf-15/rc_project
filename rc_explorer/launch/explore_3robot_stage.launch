@@ -40,7 +40,7 @@
         </node>
     </group>
 
-    <node pkg="tf" type="static_transform_publisher" name="static_tf_map_to_map_merged" args="-13.5 -5.5 0.0 0.0 0.0 0.0 map_merged map 10"  />
+    <node pkg="tf" type="static_transform_publisher" name="static_tf_map_to_map_merged" args="0.0 0.0 0.0 0.0 0.0 0.0 map_merged map 10"  />
     <node if="$(arg rviz)" type="rviz" name="rviz" pkg="rviz" args="-d $(find rc_explorer)/rviz_configs/$(arg rviz_config).rviz" />
 
     <!--===============================================================================-->
@@ -57,6 +57,9 @@
             <arg name="namespace" value="$(arg prefix)"/>
         </include>
         <include file="$(find rc_explorer)/launch/gmapping.launch">
+            <arg name="namespace" value="$(arg prefix)"/>
+        </include>
+        <include file="$(find explore_lite)/launch/explore_lite.launch">
             <arg name="namespace" value="$(arg prefix)"/>
         </include>
         <node pkg="tf" type="static_transform_publisher" name="static_tf_$(arg prefix)_to_map" args="0.0 0.0 0.0 0.0 0.0 0.0 map $(arg prefix)/map 10"  />
@@ -78,6 +81,9 @@
         <include file="$(find rc_explorer)/launch/gmapping.launch">
             <arg name="namespace" value="$(arg prefix)"/>
         </include>
+        <include file="$(find explore_lite)/launch/explore_lite.launch">
+            <arg name="namespace" value="$(arg prefix)"/>
+        </include>
         <node pkg="tf" type="static_transform_publisher" name="static_tf_$(arg prefix)_to_map" args="0.0 0.0 0.0 0.0 0.0 0.0 map $(arg prefix)/map 10"  />
     </group>
 
@@ -97,14 +103,10 @@
         <include file="$(find rc_explorer)/launch/gmapping.launch">
             <arg name="namespace" value="$(arg prefix)"/>
         </include>
+        <include file="$(find explore_lite)/launch/explore_lite.launch">
+            <arg name="namespace" value="$(arg prefix)"/>
+        </include>
         <node pkg="tf" type="static_transform_publisher" name="static_tf_$(arg prefix)_to_map" args="0.0 0.0 0.0 0.0 0.0 0.0 map $(arg prefix)/map 10"  />
     </group>
-
-
-    <!--===============================================================================-->
-    <!-- Include launch files -->
-    <!--===============================================================================-->
-    <include file="$(find rrt_exploration)/launch/three_robots.launch"/>
-
 
 </launch>
