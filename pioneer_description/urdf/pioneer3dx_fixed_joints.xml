@@ -373,7 +373,7 @@ work original in ucs-ros-pkg.
     <visual name="base_visual">
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry name="pioneer_geom">
-        <mesh filename="package://pioneer_description/meshes/p3dx_meshess/right_hubcap.stl"/>
+        <mesh filename="package://pioneer_description/meshes/p3dx_meshes/right_hubcap.stl"/>
       </geometry>
       <material name="HubcapYellow">
         <color rgba="1.0 0.811 0.151 1.0"/>
