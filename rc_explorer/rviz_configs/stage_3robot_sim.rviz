@@ -5,9 +5,9 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
+        - /Merged Map1
         - /Poses1/Pose01/Shape1
         - /Poses1/Pose11/Shape1
-        - /Global Paths1
         - /Global Paths1/Path21
       Splitter Ratio: 0.5882353186607361
     Tree Height: 1011
@@ -685,7 +685,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 20.059728622436523
+      Distance: 32.38623809814453
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -693,17 +693,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 8.80862045288086
-        Y: 5.951640605926514
-        Z: 1.489539384841919
+        X: 9.733999252319336
+        Y: 2.034930944442749
+        Z: 1.435377597808838
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.5647963285446167
+      Pitch: 1.5697963237762451
       Target Frame: <Fixed Frame>
-      Yaw: 4.7185821533203125
+      Yaw: 4.71358060836792
     Saved:
       - Class: rviz/Orbit
         Distance: 33.59461212158203
