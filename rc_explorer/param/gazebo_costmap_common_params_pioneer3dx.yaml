@@ -16,4 +16,4 @@ laser_scan_sensor:
   clearing: true,
   inf_is_valid: true}
 
-transform_tolerance : 0.5
+# transform_tolerance : 0.5

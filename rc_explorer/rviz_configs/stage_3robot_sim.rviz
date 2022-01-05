@@ -477,7 +477,7 @@ Visualization Manager:
           Use Fixed Frame: true
           Use rainbow: true
           Value: true
-      Enabled: true
+      Enabled: false
       Name: LaserScans
     - Class: rviz/Group
       Displays:
@@ -685,7 +685,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 32.38623809814453
+      Distance: 38.3353385925293
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -693,9 +693,9 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 9.733999252319336
-        Y: 2.034930944442749
-        Z: 1.435377597808838
+        X: 13.253575325012207
+        Y: 3.9406304359436035
+        Z: 1.4372777938842773
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false

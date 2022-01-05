@@ -56,7 +56,7 @@
             <arg name="sim" value="stage"/>
             <arg name="namespace" value="$(arg prefix)"/>
         </include>
-        <include file="$(find rc_explorer)/launch/gmapping.launch">
+        <include file="$(find rc_explorer)/launch/gmapping_3robots.launch">
             <arg name="namespace" value="$(arg prefix)"/>
         </include>
         <include file="$(find explore_lite)/launch/explore_lite.launch">
@@ -78,7 +78,7 @@
             <arg name="sim" value="stage"/>
             <arg name="namespace" value="$(arg prefix)"/>
         </include>
-        <include file="$(find rc_explorer)/launch/gmapping.launch">
+        <include file="$(find rc_explorer)/launch/gmapping_3robots.launch">
             <arg name="namespace" value="$(arg prefix)"/>
         </include>
         <include file="$(find explore_lite)/launch/explore_lite.launch">
@@ -100,7 +100,7 @@
             <arg name="sim" value="stage"/>
             <arg name="namespace" value="$(arg prefix)"/>
         </include>
-        <include file="$(find rc_explorer)/launch/gmapping.launch">
+        <include file="$(find rc_explorer)/launch/gmapping_3robots.launch">
             <arg name="namespace" value="$(arg prefix)"/>
         </include>
         <include file="$(find explore_lite)/launch/explore_lite.launch">
