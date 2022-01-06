@@ -18,7 +18,7 @@
 	<arg name="laser_frame" default="base_laser_link"/>    <!--laser-->
 
 	<arg name="map" default="grid"/>
-	<arg name="resolution" default="0.1"/>
+	<arg name="resolution" default="0.05"/>
 	<arg name="height" default="20.0"/>
 	<arg name="length" default="20.0"/>
 	<arg name="robot_radius" default="0.2"/>
