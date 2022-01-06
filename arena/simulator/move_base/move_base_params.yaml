@@ -15,4 +15,4 @@ oscillation_distance: 0.2
 
 conservative_reset_dist: 3.0
 
-base_global_planner: NavfnROS
+base_global_planner: navfn/NavfnROS

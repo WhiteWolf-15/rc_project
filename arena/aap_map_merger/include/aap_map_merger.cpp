@@ -219,13 +219,15 @@ void aap_map_merger::mapReceived(const nav_msgs::OccupancyGrid::ConstPtr& map_pt
 
 	int aux_robot_number = 0;
 	std::string aux1 = map_ptr->header.frame_id;
-	for (int i = 0; i < number_of_robots; i++){
-		std::ostringstream name_ostringstream;
-		name_ostringstream << "/robot_" << i;
-		const std::string name_string(name_ostringstream.str());
-		std::string aux2 = name_string +  "/map";
-		if(aux1 == aux2) aux_robot_number = i;
-	}
+	aux_robot_number = (int)(aux1[6]);
+
+	// for (int i = 0; i < number_of_robots; i++){
+	// 	std::ostringstream name_ostringstream;
+	// 	name_ostringstream << "robot_" << i;
+	// 	const std::string name_string(name_ostringstream.str());
+	// 	std::string aux2 = name_string +  "/map";
+	// 	if(aux1 == aux2) aux_robot_number = i;
+	// }
  
 	for (int i=0; i<ncols; i++) for (int j=0; j<nrows; j++){
 		if (global_map.data[index(i,j)] == unknownOccupancy)

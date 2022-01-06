@@ -84,8 +84,8 @@ bool coopexp::ready(void)
 		position_topic = "/position";
 		if(multiRobot){
 			map_frame = robot_name + "/map";
-			frontiers_frame = "frontiers";
-			frontiers_topic = robot_name + "/frontiers";
+			frontiers_frame = robot_name + "/frontiers";
+			frontiers_topic = "frontiers";
 			costmap_frame = robot_name + "/costmap";
 			costmap_topic = "costmap";
 			costmap_metadata_topic = "/" + costmap_frame + "_metadata";
@@ -97,6 +97,7 @@ bool coopexp::ready(void)
 		}else{
 			map_frame = "map";
 			frontiers_frame = "frontiers";
+			frontiers_topic = "frontiers";
 			costmap_frame = "costmap";
 			costmap_metadata_topic = "/" + costmap_frame + "_metadata";
 			utilitymap_frame = "utilitymap";

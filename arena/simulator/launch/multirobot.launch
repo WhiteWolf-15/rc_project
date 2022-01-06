@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-	<arg name="number_of_robots" default="2"/>
+	<arg name="number_of_robots" default="4"/>
 
 	<arg name="indiviual_gui" default="false"/>
 	<arg name="combined_gui" default="true"/>
@@ -18,7 +18,7 @@
 	<arg name="laser_frame" default="base_laser_link"/>    <!--laser-->
 
 	<arg name="map" default="grid"/>
-	<arg name="resolution" default="0.05"/>
+	<arg name="resolution" default="0.1"/>
 	<arg name="height" default="20.0"/>
 	<arg name="length" default="20.0"/>
 	<arg name="robot_radius" default="0.2"/>
@@ -26,8 +26,8 @@
 	<!-- <arg name="path_to_arena" default="/home/ap4isr/ruipiresc_ws/src/arena"/> -->
 	<arg name="path_to_arena" default="/home/andre_teixeira/catkin_ws/src/rc_project/arena"/>
 
-	<arg name="robot2_on" default="false"/>
-	<arg name="robot3_on" default="false"/>
+	<arg name="robot2_on" default="true"/>
+	<arg name="robot3_on" default="true"/>
 	<arg name="robot4_on" default="false"/>
 	<arg name="robot5_on" default="false"/>
 	<arg name="robot6_on" default="false"/>
@@ -91,27 +91,27 @@
 
 	<arg name="robot0_number" default="0"/>
 	<arg name="robot0_name" default="robot_$(arg robot0_number)"/>
-	<arg name="robot0_inicial_x" default="8.5"/>
-	<arg name="robot0_inicial_y" default="8.5"/>
-	<arg name="robot0_inicial_theta" default="135.0"/>
+	<arg name="robot0_inicial_x" default="0.0"/>
+	<arg name="robot0_inicial_y" default="0.0"/>
+	<arg name="robot0_inicial_theta" default="0.0"/>
 
 	<arg name="robot1_number" default="1"/>
 	<arg name="robot1_name" default="robot_$(arg robot1_number)"/>
-	<arg name="robot1_inicial_x" default="-8.5"/>
-	<arg name="robot1_inicial_y" default="8.5"/>
-	<arg name="robot1_inicial_theta" default="45.0"/>
+	<arg name="robot1_inicial_x" default="0.0"/>
+	<arg name="robot1_inicial_y" default="0.0"/>
+	<arg name="robot1_inicial_theta" default="0.0"/>
 
 	<arg name="robot2_number" default="2"/>
 	<arg name="robot2_name" default="robot_$(arg robot2_number)"/>
-	<arg name="robot2_inicial_x" default="8.5"/>
-	<arg name="robot2_inicial_y" default="-8.5"/>
-	<arg name="robot2_inicial_theta" default="-45.0"/>
+	<arg name="robot2_inicial_x" default="0.0"/>
+	<arg name="robot2_inicial_y" default="0.0"/>
+	<arg name="robot2_inicial_theta" default="0.0"/>
 
 	<arg name="robot3_number" default="3"/>
 	<arg name="robot3_name" default="robot_$(arg robot3_number)"/>
-	<arg name="robot3_inicial_x" default="-8.5"/>
-	<arg name="robot3_inicial_y" default="-8.5"/>
-	<arg name="robot3_inicial_theta" default="-135.0"/>
+	<arg name="robot3_inicial_x" default="0.0"/>
+	<arg name="robot3_inicial_y" default="0.0"/>
+	<arg name="robot3_inicial_theta" default="0.0"/>
 
 	<arg name="robot4_number" default="4"/>
 	<arg name="robot4_name" default="robot_$(arg robot4_number)"/>

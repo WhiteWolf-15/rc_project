@@ -211,7 +211,8 @@ void aap_mapping::inicializer(void)
 	rotation.setRPY(0, 0, ((inicial_theta*M_PI)/180) );
 	map_to_odom_transform.setRotation(rotation);
 
-	global_map_to_map_transform = tf::StampedTransform( tf::Transform(tf::Quaternion(0, 0, 0, 1), tf::Vector3(0.0, 0.0, 0.0)), ros::Time::now(), global_map_frame, map_frame);
+	ros::Duration future_date_duration(0.3F);
+	global_map_to_map_transform = tf::StampedTransform( tf::Transform(tf::Quaternion(0, 0, 0, 1), tf::Vector3(0.0, 0.0, 0.0)), ros::Time::now() + future_date_duration, global_map_frame, map_frame);
 
 	robotsPosition.data.clear();
 	robotsPosition.data.resize(number_of_robots*3);

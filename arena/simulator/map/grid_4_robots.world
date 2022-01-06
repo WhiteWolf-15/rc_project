@@ -27,12 +27,12 @@ pioneer (
     # Can refer to the robot by this name
     name "robot_2"
     pose [ 8.500 -8.500 0.000 -45.000 ]
-  color "blue"
+  color "green"
 )
 
 pioneer (     
     # Can refer to the robot by this name
     name "robot_3"
     pose [ -8.500 -8.500 0.000 -135.000 ]
-  color "blue"
+  color "yellow"
 )

@@ -20,7 +20,7 @@ pioneer (
     # Can refer to the robot by this name
     name "robot_1"
     pose [ 8.500 8.500 0.000 45.000 ]
-  color "blue"
+  color "red"
 )
 
 
