@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<launch>
+    <master auto="start"/>
+
+    <!--===============================================================================-->
+    <!-- Arguments -->
+    <!--===============================================================================-->
+    <arg name="teleop" default="false"/>
+    <arg name="rviz" default="true"/>
+    <arg name="rviz_config" default="real_1robot"/>
+    <!-- <arg name="model" default="$(find p3dx_description)/urdf/pioneer3dx.xml"/> -->
+
+    <!--===============================================================================-->
+    <!-- Parameters -->
+    <!--===============================================================================-->
+    <!-- <param name="robot_description" textfile="$(arg model)"/> -->
+
+    <!--===============================================================================-->
+    <!-- Include launch files -->
+    <!--===============================================================================-->
+    <include file="$(find rc_explorer)/launch/gmapping.launch"/>
+    <include file="$(find rc_explorer)/launch/move_base.launch">
+        <arg name="sim" value="real"/>
+    </include>
+    <include file="$(find p3dx_description)/launch/p3dx_description.launch">
+        <arg name="tf_prefix" value="" />
+    </include>
+    <include file="$(find explore_lite)/launch/explore.launch"/>
+
+    <!--===============================================================================-->
+    <!-- Nodes -->
+    <!--===============================================================================-->
+    <node if="$(arg teleop)" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen"/>    
+    <node if="$(arg rviz)" type="rviz" name="rviz" pkg="rviz" args="-d $(find rc_explorer)/rviz_configs/$(arg rviz_config).rviz" />
+
+    <!-- <node pkg="octomap_server" type="octomap_server_node" name="octomap_server">
+		<param name="resolution" value="0.05" />
+		<param name="frame_id" type="string" value="map" />
+		<param name="sensor_model/max_range" value="5.0" />
+		<remap from="cloud_in" to="/astra/depth_registered/points_throttled" />
+	</node> -->
+
+</launch>
