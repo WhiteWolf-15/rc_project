@@ -18,23 +18,28 @@
     <!--===============================================================================-->
     <!-- Include launch files -->
     <!--===============================================================================-->
-    <include file="$(find rc_explorer)/launch/gmapping.launch"/>
+    <node pkg="rc_explorer" type="scan_filter_node" name="scan_filter"/>
+    <include file="$(find robot)/launch/robot.launch"/>
+    <include file="$(find rc_explorer)/launch/gmapping.launch">
+        <arg name="scan_topic" value="/scan_filtered"/>
+    </include>
     <include file="$(find rc_explorer)/launch/move_base.launch">
         <arg name="sim" value="real"/>
+        <!-- <arg name="scan_topic" value="/scan_filtered"/> -->
     </include>
-    <include file="$(find p3dx_description)/launch/p3dx_description.launch">
+    <!-- <include file="$(find p3dx_description)/launch/p3dx_description.launch">
         <arg name="tf_prefix" value="" />
-    </include>
-    <include file="$(find explore_lite)/launch/explore.launch"/>
+    </include> -->
+    <!-- <include file="$(find explore_lite)/launch/explore.launch"/> -->
 
     <!--===============================================================================-->
     <!-- Nodes -->
-    <!--===============================================================================-->
+    <!--===============================================================================--> 
     <node if="$(arg teleop)" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen"/>    
     <node if="$(arg rviz)" type="rviz" name="rviz" pkg="rviz" args="-d $(find rc_explorer)/rviz_configs/$(arg rviz_config).rviz" />
 
     <!-- <node pkg="octomap_server" type="octomap_server_node" name="octomap_server">
-		<param name="resolution" value="0.05" />
+		<param name="resolution" value="0.3" />
 		<param name="frame_id" type="string" value="map" />
 		<param name="sensor_model/max_range" value="5.0" />
 		<remap from="cloud_in" to="/astra/depth_registered/points_throttled" />
