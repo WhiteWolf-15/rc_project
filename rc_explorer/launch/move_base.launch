@@ -3,7 +3,6 @@
   <!-- Arguments -->
   <arg name="model" default="pioneer3dx"/>
   <arg name="sim" default="gazebo"/>
-  <!-- <arg name="scan_topic" default="/scan"/> -->
 
   <!-- move_base node -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
@@ -16,8 +15,6 @@
     <rosparam file="$(find rc_explorer)/param/$(arg sim)_costmap_common_params_$(arg model).yaml" command="load" ns="local_costmap" />
     <rosparam file="$(find rc_explorer)/param/$(arg sim)_global_costmap_params_$(arg model).yaml" command="load" />
     <rosparam file="$(find rc_explorer)/param/$(arg sim)_local_costmap_params_$(arg model).yaml" command="load" />
-
-    <!-- <remap from="/scan" to="$(arg scan_topic)"/> -->
   </node>
 
 </launch>

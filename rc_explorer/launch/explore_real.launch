@@ -8,28 +8,15 @@
     <arg name="teleop" default="false"/>
     <arg name="rviz" default="true"/>
     <arg name="rviz_config" default="real_1robot"/>
-    <!-- <arg name="model" default="$(find p3dx_description)/urdf/pioneer3dx.xml"/> -->
-
-    <!--===============================================================================-->
-    <!-- Parameters -->
-    <!--===============================================================================-->
-    <!-- <param name="robot_description" textfile="$(arg model)"/> -->
 
     <!--===============================================================================-->
     <!-- Include launch files -->
     <!--===============================================================================-->
-    <!-- <node pkg="rc_explorer" type="scan_filter_node" name="scan_filter"/> -->
     <include file="$(find robot)/launch/robot.launch"/>
-    <include file="$(find rc_explorer)/launch/gmapping.launch">
-        <!-- <arg name="scan_topic" value="/scan_filtered"/> -->
-    </include>
+    <include file="$(find rc_explorer)/launch/gmapping.launch"/>
     <include file="$(find rc_explorer)/launch/move_base.launch">
         <arg name="sim" value="real"/>
-        <!-- <arg name="scan_topic" value="/scan_filtered"/> -->
     </include>
-    <!-- <include file="$(find p3dx_description)/launch/p3dx_description.launch">
-        <arg name="tf_prefix" value="" />
-    </include> -->
     <include file="$(find explore_lite)/launch/explore.launch"/>
 
     <!--===============================================================================-->
