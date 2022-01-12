@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <launch>
   <arg name="namespace" default=""/>
-  <arg name="scan_topic" default="/scan"/>
+  <!-- <arg name="scan_topic" default="/scan"/> -->
 
   <!-- gmapping node -->
   <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
-    <remap from="/scan" to="$(arg scan_topic)"/>
+    <!-- <remap from="/scan" to="$(arg scan_topic)"/> -->
 
     <param name="throttle_scans" value="5"/><!-- 10  1  -->
     <param name="map_udpate_interval" value="2.5"/> <!--5.0 1.0 -->
-    <param name="maxUrange" value="6.0"/> <!--16-->
+    <param name="maxUrange" value="5.5"/> <!--16-->
     <param name="sigma" value="0.05"/>
     <param name="kernelSize" value="1"/>
     <param name="lstep" value="0.05"/>
@@ -36,7 +36,7 @@
     <param name="llsamplestep" value="0.01"/>
     <param name="lasamplerange" value="0.005"/>
     <param name="lasamplestep" value="0.005"/>
-    <param name="maxRange" value="7.0"/>
+    <param name="maxRange" value="6.0"/>
   </node>
 
 </launch>

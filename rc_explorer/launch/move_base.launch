@@ -3,7 +3,7 @@
   <!-- Arguments -->
   <arg name="model" default="pioneer3dx"/>
   <arg name="sim" default="gazebo"/>
-  <arg name="scan_topic" default="/scan"/>
+  <!-- <arg name="scan_topic" default="/scan"/> -->
 
   <!-- move_base node -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
