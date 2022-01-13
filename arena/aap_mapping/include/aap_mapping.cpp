@@ -91,7 +91,7 @@ aap_mapping::aap_mapping()
 
 	ros::Rate loop_rate(frequency);
 	while (ros::ok()){
-		map_to_odom_transform.stamp_ = ros::Time::now();
+		map_to_odom_transform.stamp_ = ros::Time::now() + ros::Duration(1.0);
 		map_to_odom_broadcaster.sendTransform(map_to_odom_transform);
 	
 		if(multiRobot){

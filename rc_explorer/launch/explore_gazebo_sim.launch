@@ -22,7 +22,7 @@
     <include file="$(find rc_explorer)/launch/gazebo.launch">
         <arg name="x_pos" default="7.0"/>
         <arg name="y_pos" default="-10.0"/>
-        <arg name="z_pos" default="0.05"/>
+        <arg name="z_pos" default="0.02"/>
     </include>
     <include file="$(find rc_explorer)/launch/gmapping.launch"/>
     <include file="$(find rc_explorer)/launch/move_base.launch"/>

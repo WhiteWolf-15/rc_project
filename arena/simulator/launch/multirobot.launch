@@ -6,7 +6,7 @@
 	<arg name="indiviual_gui" default="false"/>
 	<arg name="combined_gui" default="true"/>
 
-	<arg name="iterations" default="1.0"/>
+	<arg name="iterations" default="10.0"/>
 	
 	<arg name="frequency" default="10.0"/>
 	<arg name="mapmerger_frequency" default="1.0"/>
