@@ -17,6 +17,7 @@ After installing everything, change the current directory to your ROS workspace 
 ```
 catkin_make
 ```
+NOTE: You should remove any packages with same name from your ROS workspace before running the commands above
 
 ## Single Robot Gazebo Simulation 
 
