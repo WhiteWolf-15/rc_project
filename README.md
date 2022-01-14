@@ -6,10 +6,11 @@ Before running the simulations, the following packages need to be installed:
 - navigation stack
 - gmapping
 - octomap_mapping
+- -multirobot_map_merge
 
 To install them run the following command in a terminal window
 ```
-sudo apt install ros-noetic-navigation ros-noetic-gmapping ros-noetic-octomap ros-noetic-octomap-mapping ros-noetic-octomap-msgs ros-noetic-octomap-ros ros-noetic-octomap-rviz-plugins ros-noetic-octomap-server
+sudo apt install ros-noetic-navigation ros-noetic-gmapping ros-noetic-multirobot-map-merge ros-noetic-octomap ros-noetic-octomap-mapping ros-noetic-octomap-msgs ros-noetic-octomap-ros ros-noetic-octomap-rviz-plugins ros-noetic-octomap-server
 ```
 The Gazebo simulator also needs to be installed.
 
