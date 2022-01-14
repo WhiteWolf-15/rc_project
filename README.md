@@ -6,7 +6,7 @@ Before running the simulations, the following packages need to be installed:
 - navigation stack
 - gmapping
 - octomap_mapping
-- -multirobot_map_merge
+- multirobot_map_merge
 
 To install them run the following command in a terminal window
 ```
